@@ -8,11 +8,11 @@ import {
   ImageBackground,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { AppStackParamList } from '../../navigation/types';
 import { mockedOffers } from '../../mocks/offers';
 
 type OfferDetailsScreenProps = NativeStackScreenProps<
-  RootStackParamList,
+  AppStackParamList,
   'OfferDetails'
 >;
 

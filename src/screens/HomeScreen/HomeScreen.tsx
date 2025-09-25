@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Image, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Image } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { AppStackParamList } from '../../navigation/types';
 import { mockedOffers } from '../../mocks/offers';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { OfferCard } from '../../components';
-import { Avatar } from 'react-native-paper';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Props = NativeStackScreenProps<AppStackParamList, 'Home'>;
 
 const HEADER_HEIGHT = 64;
 
@@ -28,8 +27,9 @@ export function HomeScreen({}: Props) {
                 filter: 'blur(28px)',
               }}
             />
-            <Avatar.Image
-              size={40}
+            <Image
+              width={40}
+              height={40}
               source={{
                 uri: 'https://avatars.slack-edge.com/2018-07-07/394090795425_d839ad8427bc10706d5e_512.jpg',
               }}
