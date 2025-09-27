@@ -5,6 +5,7 @@ import { AppStackParamList } from '../../navigation/types';
 import { mockedOffers } from '../../mocks/offers';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { OfferCard } from '../../components';
+import { Icons } from '../../assets/icons';
 
 type Props = NativeStackScreenProps<AppStackParamList, 'Home'>;
 
@@ -35,7 +36,9 @@ export function HomeScreen({}: Props) {
               }}
               style={styles.avatar}
             />
-            {/* TODO: add search icon */}
+            <View style={{ padding: 8 }}>
+              <Icons.Search width={24} height={24} />
+            </View>
           </View>
         )}
         keyExtractor={item => item.id.toString()}

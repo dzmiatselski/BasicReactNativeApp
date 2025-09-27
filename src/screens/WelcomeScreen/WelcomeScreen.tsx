@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Image, StatusBar } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/types';
 import { Text } from 'react-native-paper';
 import { useAuthContext } from '../../contexts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Images } from '../../assets/images';
+import { Icons } from '../../assets/icons';
+import { Button } from '../../components';
+import { GradientText } from './components';
+import styles from './WelcomeScreen.styles';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Welcome'>;
 
 const steps = [
-  'Take the Next Step in Your Loyalty Journey',
-  'Unforgettable Experiences',
-  'Strength in Numbers',
-  'Inspiring Local Shopping',
-  'Cost-Effective Solutions',
+  <>
+    <Text style={styles.text}>Take the Next Step in Your </Text>
+    <GradientText style={styles.text}>Loyalty</GradientText>
+    <Text style={styles.text}> Journey</Text>
+  </>,
+  <>
+    <Text style={styles.text}>Unforgettable </Text>
+    <GradientText style={styles.text}>Experiences</GradientText>
+  </>,
+  <>
+    <Text style={styles.text}>Strength </Text>
+    <Text style={styles.text}>in </Text>
+    <GradientText style={styles.text}>Numbers</GradientText>
+  </>,
+  <>
+    <Text style={styles.text}>Inspiring </Text>
+    <GradientText style={styles.text}>Local Shopping</GradientText>
+  </>,
+  <>
+    <GradientText style={styles.text}>Cost-Effective</GradientText>
+    <Text style={styles.text}> Solutions</Text>
+  </>,
 ];
 
 export function WelcomeScreen({}: Props) {
@@ -30,12 +51,18 @@ export function WelcomeScreen({}: Props) {
     }
   };
 
+  const isLastStep = step === steps.length - 1;
+
   return (
-    // TODO: add appropriate styles for different theme modes? android top bar is invisible on light theme
-    <View style={[styles.container, { marginTop: safeInsets.top }]}>
+    <View style={[styles.container, { paddingTop: safeInsets.top }]}>
+      <StatusBar barStyle="light-content" />
+
       <View style={styles.stepper}>
         {steps.map((_, i) => (
-          <View key={i} style={[styles.step, i <= step && styles.activeStep]} />
+          <View
+            key={i}
+            style={[styles.step, i === step && styles.activeStep]}
+          />
         ))}
       </View>
 
@@ -47,50 +74,22 @@ export function WelcomeScreen({}: Props) {
         />
       </View>
 
-      <Text style={styles.text}>{steps[step]}</Text>
+      <View style={styles.stepContentWrapper}>{steps[step]}</View>
 
-      {/* TODO: use svg ArrowRight */}
-      <TouchableOpacity style={styles.button} onPress={nextStep}>
-        <Text style={styles.buttonText}>
-          {step === steps.length - 1 ? 'Get Started' : 'Next'}
-        </Text>
-      </TouchableOpacity>
+      <View style={styles.buttonWrapper}>
+        <Button
+          color="primary"
+          size="large"
+          onPress={nextStep}
+          style={isLastStep ? styles.button : styles.arrowButton}
+        >
+          {isLastStep ? (
+            <Text style={styles.buttonText}>Get Started</Text>
+          ) : (
+            <Icons.ArrowRight width={24} height={24} />
+          )}
+        </Button>
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#252137',
-  },
-  stepper: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 25,
-    paddingHorizontal: 24,
-    paddingBottom: 36,
-  },
-  step: {
-    width: 60,
-    height: 3,
-    backgroundColor: '#fff',
-    opacity: 0.3,
-    borderRadius: 2,
-  },
-  activeStep: { backgroundColor: '#fff', opacity: 1 },
-  imageWrapper: { width: '100%', paddingHorizontal: 40, paddingBottom: 64 },
-  logo: { width: '100%' },
-  text: { fontSize: 32, fontWeight: 600, textAlign: 'center', color: '#fff' },
-  button: {
-    position: 'absolute',
-    right: 32,
-    bottom: 72,
-    backgroundColor: '#037ED6',
-    padding: 13,
-    borderRadius: 40,
-  },
-  buttonText: { color: '#fff', fontSize: 17, fontWeight: '500' },
-});
