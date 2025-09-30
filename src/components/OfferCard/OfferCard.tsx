@@ -3,7 +3,7 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { Card, Text, Icon } from 'react-native-paper';
 import { Offer } from '../../types/offers';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { AppStackParamList } from '../../navigation/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 interface OfferCardProps {
@@ -13,7 +13,7 @@ interface OfferCardProps {
 
 export const OfferCard = ({ offer, containerStyle }: OfferCardProps) => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
 
   return (
     <Card

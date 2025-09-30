@@ -30,7 +30,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexWrap: 'wrap',
   },
-  text: { fontSize: 32, fontWeight: 600, textAlign: 'center', color: '#fff' },
+  text: {
+    color: '#fff',
+  },
   buttonWrapper: {
     position: 'absolute',
     bottom: 72,
@@ -46,8 +48,5 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 17,
-    fontWeight: '500',
-    textAlign: 'center',
   },
 });

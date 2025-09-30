@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { View, Image, StatusBar } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/types';
-import { Text } from 'react-native-paper';
 import { useAuthContext } from '../../contexts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Images } from '../../assets/images';
 import { Icons } from '../../assets/icons';
-import { Button } from '../../components';
+import { Button, Text } from '../../components';
 import { GradientText } from './components';
 import styles from './WelcomeScreen.styles';
 
@@ -15,26 +14,53 @@ type Props = NativeStackScreenProps<AuthStackParamList, 'Welcome'>;
 
 const steps = [
   <>
-    <Text style={styles.text}>Take the Next Step in Your </Text>
-    <GradientText style={styles.text}>Loyalty</GradientText>
-    <Text style={styles.text}> Journey</Text>
+    <Text variant="h1" style={styles.text}>
+      Unlock{' '}
+    </Text>
+    <GradientText variant="h1" style={styles.text}>
+      Rewards
+    </GradientText>
+    <Text variant="h1" style={styles.text}>
+      {' '}
+      Everywhere
+    </Text>
   </>,
   <>
-    <Text style={styles.text}>Unforgettable </Text>
-    <GradientText style={styles.text}>Experiences</GradientText>
+    <GradientText variant="h1" style={styles.text}>
+      Earn Points
+    </GradientText>
+    <Text variant="h1" style={styles.text}>
+      {' '}
+      as You Shop
+    </Text>
   </>,
   <>
-    <Text style={styles.text}>Strength </Text>
-    <Text style={styles.text}>in </Text>
-    <GradientText style={styles.text}>Numbers</GradientText>
+    <Text variant="h1" style={styles.text}>
+      Find Rewards{' '}
+    </Text>
+    <GradientText variant="h1" style={styles.text}>
+      Near You
+    </GradientText>
   </>,
   <>
-    <Text style={styles.text}>Inspiring </Text>
-    <GradientText style={styles.text}>Local Shopping</GradientText>
+    <Text variant="h1" style={styles.text}>
+      Be the First to{' '}
+    </Text>
+    <GradientText variant="h1" style={styles.text}>
+      Know About Deals
+    </GradientText>
   </>,
   <>
-    <GradientText style={styles.text}>Cost-Effective</GradientText>
-    <Text style={styles.text}> Solutions</Text>
+    <Text variant="h1" style={styles.text}>
+      Ready to{' '}
+    </Text>
+    <GradientText variant="h1" style={styles.text}>
+      Unlock
+    </GradientText>
+    <Text variant="h1" style={styles.text}>
+      {' '}
+      Rewards?
+    </Text>
   </>,
 ];
 
@@ -84,7 +110,9 @@ export function WelcomeScreen({}: Props) {
           style={isLastStep ? styles.button : styles.arrowButton}
         >
           {isLastStep ? (
-            <Text style={styles.buttonText}>Get Started</Text>
+            <Text variant="controlL" style={styles.buttonText}>
+              Get Started
+            </Text>
           ) : (
             <Icons.ArrowRight width={24} height={24} />
           )}
