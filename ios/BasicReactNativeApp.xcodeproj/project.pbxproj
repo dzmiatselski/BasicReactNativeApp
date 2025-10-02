@@ -13,6 +13,9 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		385BB65F71394C9F833B0BF0 /* PoppinsMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CC38E1B97A147D99C745DDB /* PoppinsMedium.ttf */; };
 		833CA07212EA472FB9F6BEC6 /* PoppinsSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7751284CC05240CEA6F3E688 /* PoppinsSemiBold.ttf */; };
+		0709302C18894A3FB2BC3A21 /* Inter18ptRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9A99CCCFE834A85A6F9CF10 /* Inter18ptRegular.ttf */; };
+		2496557903D84169B2D1088B /* RobotoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41EB56E96FBD4ECEAB7D75D5 /* RobotoRegular.ttf */; };
+		E99598F76A1B4792BE360CCD /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 406271BAB8FB4497B7A31EA7 /* RobotoBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		7CC38E1B97A147D99C745DDB /* PoppinsMedium.ttf */ = {isa = PBXFileReference; name = "PoppinsMedium.ttf"; path = "../src/assets/fonts/PoppinsMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7751284CC05240CEA6F3E688 /* PoppinsSemiBold.ttf */ = {isa = PBXFileReference; name = "PoppinsSemiBold.ttf"; path = "../src/assets/fonts/PoppinsSemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C9A99CCCFE834A85A6F9CF10 /* Inter18ptRegular.ttf */ = {isa = PBXFileReference; name = "Inter18ptRegular.ttf"; path = "../src/assets/fonts/Inter18ptRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		41EB56E96FBD4ECEAB7D75D5 /* RobotoRegular.ttf */ = {isa = PBXFileReference; name = "RobotoRegular.ttf"; path = "../src/assets/fonts/RobotoRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		406271BAB8FB4497B7A31EA7 /* RobotoBold.ttf */ = {isa = PBXFileReference; name = "RobotoBold.ttf"; path = "../src/assets/fonts/RobotoBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,9 @@
 			children = (
 				7CC38E1B97A147D99C745DDB /* PoppinsMedium.ttf */,
 				7751284CC05240CEA6F3E688 /* PoppinsSemiBold.ttf */,
+				C9A99CCCFE834A85A6F9CF10 /* Inter18ptRegular.ttf */,
+				41EB56E96FBD4ECEAB7D75D5 /* RobotoRegular.ttf */,
+				406271BAB8FB4497B7A31EA7 /* RobotoBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -176,6 +185,9 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				385BB65F71394C9F833B0BF0 /* PoppinsMedium.ttf in Resources */,
 				833CA07212EA472FB9F6BEC6 /* PoppinsSemiBold.ttf in Resources */,
+				0709302C18894A3FB2BC3A21 /* Inter18ptRegular.ttf in Resources */,
+				2496557903D84169B2D1088B /* RobotoRegular.ttf in Resources */,
+				E99598F76A1B4792BE360CCD /* RobotoBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

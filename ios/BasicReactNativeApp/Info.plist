@@ -51,6 +51,9 @@
 	<array>
 		<string>PoppinsMedium.ttf</string>
 		<string>PoppinsSemiBold.ttf</string>
+		<string>Inter18ptRegular.ttf</string>
+		<string>RobotoRegular.ttf</string>
+		<string>RobotoBold.ttf</string>
 	</array>
 </dict>
 </plist>

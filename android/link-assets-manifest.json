@@ -2,12 +2,24 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/fonts/Inter18ptRegular.ttf",
+      "sha1": "bd1976c1f019853ab6143ef1246e25aa66fd990e"
+    },
+    {
       "path": "src/assets/fonts/PoppinsMedium.ttf",
       "sha1": "283f21b44efbdbf276ba802be2d949a36bbc4233"
     },
     {
       "path": "src/assets/fonts/PoppinsSemiBold.ttf",
       "sha1": "8a4ace9392d06bcb7f8ea2f5169b07e4c383a90d"
+    },
+    {
+      "path": "src/assets/fonts/RobotoBold.ttf",
+      "sha1": "783de2321d7e6d21f880a10437a9f2c7b45ed198"
+    },
+    {
+      "path": "src/assets/fonts/RobotoRegular.ttf",
+      "sha1": "3bff51436aa7eb995d84cfc592cc63e1316bb400"
     }
   ]
 }

@@ -2,11 +2,9 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import MaskedView from '@react-native-masked-view/masked-view';
 import LinearGradient from 'react-native-linear-gradient';
-import { TypographyVariant } from '../../../theme/typography';
-import { Text } from '../../../components';
-import { TextProps } from 'react-native-paper';
+import { Text, TextProps } from '../../../components';
 
-type GradientTextProps = TextProps<TypographyVariant> & {
+type GradientTextProps = TextProps & {
   colors?: string[];
 };
 

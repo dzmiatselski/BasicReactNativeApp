@@ -30,9 +30,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexWrap: 'wrap',
   },
-  text: {
-    color: '#fff',
-  },
   buttonWrapper: {
     position: 'absolute',
     bottom: 72,
@@ -46,7 +43,20 @@ export default StyleSheet.create({
   button: {
     width: '100%',
   },
-  buttonText: {
-    color: '#fff',
+  modalContainer: {
+    marginBottom: 0,
+  },
+  modalContentContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingVertical: 40,
+    paddingHorizontal: 32,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    backgroundColor: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 40,
   },
 });

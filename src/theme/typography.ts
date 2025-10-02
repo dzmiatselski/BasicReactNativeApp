@@ -1,6 +1,11 @@
 import { MD3Type } from 'react-native-paper/lib/typescript/types';
 
-export type TypographyVariant = 'h1' | 'controlL';
+export type TypographyVariant =
+  | 'h1'
+  | 'controlL'
+  | 'controlM'
+  | 'footnoteRegular'
+  | 'footnoteBold';
 
 export const typographyConfig: Record<TypographyVariant, MD3Type> = {
   h1: {
@@ -16,5 +21,26 @@ export const typographyConfig: Record<TypographyVariant, MD3Type> = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0.034,
+  },
+  controlM: {
+    fontFamily: 'PoppinsMedium',
+    fontWeight: '500',
+    fontSize: 15,
+    lineHeight: 20,
+    letterSpacing: 0.3,
+  },
+  footnoteRegular: {
+    fontFamily: 'RobotoRegular',
+    fontWeight: '400',
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0.195,
+  },
+  footnoteBold: {
+    fontFamily: 'RobotoBold',
+    fontWeight: '700',
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0.195,
   },
 };
