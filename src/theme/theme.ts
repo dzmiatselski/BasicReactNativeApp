@@ -15,6 +15,10 @@ export const theme = {
     textParagraph: '#535371',
     textCaption: '#8E8EAB',
     white: '#FFFFFF',
+    error: '#F44040',
+
+    surfaceBorders: '#EBEBF5',
+    borderFilled: '#D7D7EC',
   },
 };
 

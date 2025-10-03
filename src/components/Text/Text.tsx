@@ -7,7 +7,8 @@ export type TextColorVariant =
   | 'heading'
   | 'paragraph'
   | 'caption'
-  | 'white';
+  | 'white'
+  | 'error';
 
 const RNPText = customText<TypographyVariant>();
 
@@ -24,6 +25,7 @@ export function Text({ color, style, ...props }: TextProps) {
     paragraph: theme.colors.textParagraph,
     caption: theme.colors.textCaption,
     white: theme.colors.white,
+    error: theme.colors.error,
   };
 
   return (

@@ -5,7 +5,9 @@ export type TypographyVariant =
   | 'controlL'
   | 'controlM'
   | 'footnoteRegular'
-  | 'footnoteBold';
+  | 'footnoteBold'
+  | 'paragraphS'
+  | 'captionRegular';
 
 export const typographyConfig: Record<TypographyVariant, MD3Type> = {
   h1: {
@@ -42,5 +44,19 @@ export const typographyConfig: Record<TypographyVariant, MD3Type> = {
     fontSize: 13,
     lineHeight: 18,
     letterSpacing: 0.195,
+  },
+  paragraphS: {
+    fontFamily: 'Inter18ptRegular',
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0,
+  },
+  captionRegular: {
+    fontFamily: 'Inter18ptRegular',
+    fontWeight: '400',
+    fontSize: 11,
+    lineHeight: 13,
+    letterSpacing: 0.11,
   },
 };

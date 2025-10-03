@@ -66,7 +66,7 @@ const steps = [
   </>,
 ];
 
-export function WelcomeScreen({}: Props) {
+export function WelcomeScreen({ navigation }: Props) {
   const [step, setStep] = useState(0);
   const { setIsLoggedIn } = useAuthContext();
   const safeInsets = useSafeAreaInsets();
@@ -145,7 +145,10 @@ export function WelcomeScreen({}: Props) {
             <Button
               color="primary"
               size="large"
-              onPress={() => console.log('navigate to Sign in')}
+              onPress={() => {
+                hideModal();
+                navigation.navigate('SignIn');
+              }}
               style={styles.button}
             >
               <Text variant="controlL" color="white">
