@@ -11,6 +11,7 @@ export const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#2B57CD',
+    primaryGreen: '#00D489',
     textHeading: '#121217',
     textParagraph: '#535371',
     textCaption: '#8E8EAB',
@@ -18,6 +19,7 @@ export const theme = {
     error: '#F44040',
 
     surfaceBorders: '#EBEBF5',
+    surfaceScreen: '#FAFAFE',
     borderFilled: '#D7D7EC',
   },
 };

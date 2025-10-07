@@ -107,7 +107,7 @@ export function WelcomeScreen({ navigation }: Props) {
 
       <View style={styles.buttonWrapper}>
         <Button
-          color="primary"
+          variant="primary"
           size="large"
           onPress={nextStep}
           style={isLastStep ? styles.button : styles.arrowButton}
@@ -117,7 +117,7 @@ export function WelcomeScreen({ navigation }: Props) {
               Get Started
             </Text>
           ) : (
-            <Icons.ArrowRight width={24} height={24} />
+            <Icons.ArrowRight width={24} height={24} color="white" />
           )}
         </Button>
       </View>
@@ -143,7 +143,7 @@ export function WelcomeScreen({ navigation }: Props) {
             }}
           >
             <Button
-              color="primary"
+              variant="primary"
               size="large"
               onPress={() => {
                 hideModal();
@@ -157,11 +157,12 @@ export function WelcomeScreen({ navigation }: Props) {
             </Button>
 
             <Button
-              color="default"
+              variant="default"
               size="large"
-              onPress={() =>
-                console.log('navigate to Onboarding/Create an Account')
-              }
+              onPress={() => {
+                hideModal();
+                navigation.navigate('Onboarding');
+              }}
               style={styles.button}
             >
               <Text variant="controlL" color="heading">
@@ -174,7 +175,7 @@ export function WelcomeScreen({ navigation }: Props) {
             </Text>
 
             <Button
-              color="default"
+              variant="default"
               size="large"
               onPress={() => {
                 console.log('navigate to Welcome Final(?) screen');

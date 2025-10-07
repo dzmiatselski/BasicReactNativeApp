@@ -4,8 +4,9 @@ import LinearGradient from 'react-native-linear-gradient';
 
 type ButtonProps = {
   onPress: () => void;
-  color?: 'primary' | 'default';
+  variant?: 'primary' | 'outlined' | 'default';
   size?: 'large' | 'medium' | 'small';
+  disabled?: boolean;
   style?: ViewStyle;
   children: ReactNode;
 };
@@ -18,19 +19,27 @@ const HEIGHTS = {
 
 export function Button({
   onPress,
-  color = 'default',
+  variant = 'default',
   size = 'medium',
+  disabled,
   style,
   children,
 }: ButtonProps) {
   const height = HEIGHTS[size];
 
-  if (color === 'primary') {
+  // TODO: fix disabled primary button white text color mismatch(?)
+  if (variant === 'primary') {
     return (
       <TouchableOpacity
         onPress={onPress}
         activeOpacity={0.8}
-        style={[styles.primaryButton, { height }, style]}
+        disabled={disabled}
+        style={[
+          styles.primaryButton,
+          { height },
+          style,
+          disabled && styles.disabled,
+        ]}
       >
         <LinearGradient
           colors={['#037ED6', '#5232DB']}
@@ -47,7 +56,13 @@ export function Button({
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.8}
-      style={[styles.defaultButton, { height }, style]}
+      disabled={disabled}
+      style={[
+        variant === 'outlined' ? styles.outlinedButton : styles.defaultButton,
+        { height },
+        style,
+        disabled && styles.disabled,
+      ]}
     >
       {children}
     </TouchableOpacity>
@@ -56,19 +71,34 @@ export function Button({
 
 const styles = StyleSheet.create({
   primaryButton: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 24,
     borderRadius: 40,
     overflow: 'hidden',
   },
+  outlinedButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: '#EBEBF5',
+    borderRadius: 40,
+    overflow: 'hidden',
+    paddingHorizontal: 24,
+  },
   defaultButton: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(144, 144, 203, 0.05)',
     borderRadius: 40,
     overflow: 'hidden',
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingHorizontal: 24,
+  },
+  disabled: {
+    opacity: 0.3,
   },
 });

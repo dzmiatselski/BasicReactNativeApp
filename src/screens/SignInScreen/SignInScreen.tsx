@@ -24,7 +24,7 @@ export function SignInScreen({}: Props) {
         <Icons.OstanaLogoWithText width={160} height={46} />
 
         <View style={{ display: 'flex', gap: 20 }}>
-          <Text variant="h1" color="heading">
+          <Text variant="h3" color="heading">
             Sign in
           </Text>
           <Text variant="controlL" color="heading">
@@ -54,12 +54,12 @@ export function SignInScreen({}: Props) {
         </View> */}
 
         {/* TODO: add form & values management */}
+        {/* TODO: add redirect to Forgot password page? */}
         <View style={{ gap: 16 }}>
           <BaseInput placeholder="name@host.com" />
           <View style={{ gap: 8 }}>
             <PasswordInput placeholder="Enter password" />
             <View style={{ paddingVertical: 4, alignItems: 'center' }}>
-              {/* TODO: add redirect to Forgot password page? */}
               <Text variant="paragraphS" color="primary">
                 Forgot your password?
               </Text>
@@ -77,7 +77,7 @@ export function SignInScreen({}: Props) {
         >
           <View style={{ gap: 8 }}>
             <Button
-              color="primary"
+              variant="primary"
               size="large"
               onPress={() => {
                 console.log('navigate to Welcome Final(?) screen');
