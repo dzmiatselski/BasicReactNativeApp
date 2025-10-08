@@ -5,16 +5,29 @@ import { AuthStackParamList } from '../../navigation/types';
 import { useAuthContext } from '../../contexts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icons } from '../../assets/icons';
-import { BaseInput, Button, PasswordInput, Text } from '../../components';
+import { Button, FormInput, FormPasswordInput, Text } from '../../components';
 import styles from './SignInScreen.styles';
 import { HorizontalLine } from './components';
+import { Link } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { SignInFormValues } from './types';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'SignIn'>;
 
-// TODO: move inline styles to SignInScreen.styles
 export function SignInScreen({}: Props) {
   const { setIsLoggedIn } = useAuthContext();
   const safeInsets = useSafeAreaInsets();
+
+  const { control, handleSubmit } = useForm<SignInFormValues>({
+    defaultValues: { email: '', password: '' },
+    mode: 'onChange',
+  });
+
+  const onSubmit = (data: SignInFormValues) => {
+    console.log('Form data:', data);
+    // TODO: navigate to Welcome Final screen
+    setIsLoggedIn(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -32,33 +45,31 @@ export function SignInScreen({}: Props) {
           </Text>
         </View>
 
-        {/* TODO: remove */}
-        {/* <View style={{ gap: 4 }}>
-          <Text variant="controlL">with placeholder</Text>
-          <BaseInput placeholder="name@host.com" />
-
-          <Text variant="controlL">with label and helper text</Text>
-          <BaseInput label="First Name" helperText="Helper text" />
-
-          <Text variant="controlL">filled with label</Text>
-          <BaseInput label="First Name" value="John Doe" />
-
-          <Text variant="controlL">incorrect</Text>
-          <BaseInput label="First Name" errorMessage="Error msg text" />
-
-          <Text variant="controlL">disabled</Text>
-          <BaseInput label="First Name" disabled />
-
-          <Text variant="controlL">PasswordInput</Text>
-          <PasswordInput placeholder="Enter password" />
-        </View> */}
-
-        {/* TODO: add form & values management */}
         {/* TODO: add redirect to Forgot password page? */}
         <View style={{ gap: 16 }}>
-          <BaseInput placeholder="name@host.com" />
+          <FormInput
+            name="email"
+            control={control}
+            placeholder="name@host.com"
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Invalid email',
+              },
+            }}
+          />
+
           <View style={{ gap: 8 }}>
-            <PasswordInput placeholder="Enter password" />
+            <FormPasswordInput
+              name="password"
+              control={control}
+              placeholder="Enter password"
+              rules={{
+                required: 'Password is required',
+                minLength: { value: 6, message: 'Min 6 chars' },
+              }}
+            />
             <View style={{ paddingVertical: 4, alignItems: 'center' }}>
               <Text variant="paragraphS" color="primary">
                 Forgot your password?
@@ -67,22 +78,12 @@ export function SignInScreen({}: Props) {
           </View>
         </View>
 
-        <View
-          style={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'stretch',
-            gap: 24,
-          }}
-        >
+        <View style={styles.actionsWrapper}>
           <View style={{ gap: 8 }}>
             <Button
               variant="primary"
               size="large"
-              onPress={() => {
-                console.log('navigate to Welcome Final(?) screen');
-                setIsLoggedIn(true);
-              }}
+              onPress={handleSubmit(onSubmit)}
               style={styles.button}
             >
               <Text variant="controlL" color="white">
@@ -90,21 +91,15 @@ export function SignInScreen({}: Props) {
               </Text>
             </Button>
             <View style={{ paddingVertical: 4, alignItems: 'center' }}>
-              {/* TODO: add redirect to Onboarding/Create an Account page */}
-              <Text variant="paragraphS" color="primary">
-                New user? Create an account
-              </Text>
+              <Link screen="Onboarding" params={{}}>
+                <Text variant="paragraphS" color="primary">
+                  New user? Create an account
+                </Text>
+              </Link>
             </View>
           </View>
 
-          <View
-            style={{
-              paddingHorizontal: 8,
-              flexDirection: 'row',
-              gap: 24,
-              alignItems: 'center',
-            }}
-          >
+          <View style={styles.orWrapper}>
             <HorizontalLine />
             <Text variant="controlM" color="caption">
               OR

@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/types';
-// import { useAuthContext } from '../../contexts';
+import { useAuthContext } from '../../contexts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icons } from '../../assets/icons';
 import { Text } from '../../components';
-import styles from './OnboardingScreen.styles';
 import { ContactInformationStep, PhoneNumberStep, Stepper } from './components';
+import { FormProvider, useForm } from 'react-hook-form';
+import { OnboardingFormValues } from './types';
+import { defaultValues } from './defaultValues';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Onboarding'>;
 
-// TODO: move inline styles to OnboardingScreen.styles
 export function OnboardingScreen({}: Props) {
   const [currentStep, setCurrentStep] = useState(0);
 
-  // const { setIsLoggedIn } = useAuthContext();
+  const { setIsLoggedIn } = useAuthContext();
   const safeInsets = useSafeAreaInsets();
+
+  const methods = useForm<OnboardingFormValues>({
+    defaultValues,
+    mode: 'onChange',
+  });
+
+  const { handleSubmit } = methods;
+
+  const onSubmit = (data: OnboardingFormValues) => {
+    console.log('Form data:', data);
+    // TODO: navigate to Welcome Final screen
+    setIsLoggedIn(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -34,12 +48,17 @@ export function OnboardingScreen({}: Props) {
             <Stepper currentStep={currentStep} />
 
             <View style={{ flex: 1, display: 'flex', gap: 32 }}>
-              {currentStep === 0 && (
-                <ContactInformationStep setStep={setCurrentStep} />
-              )}
-              {currentStep === 1 && (
-                <PhoneNumberStep setStep={setCurrentStep} />
-              )}
+              <FormProvider {...methods}>
+                {currentStep === 0 && (
+                  <ContactInformationStep setStep={setCurrentStep} />
+                )}
+                {currentStep === 1 && (
+                  <PhoneNumberStep
+                    setStep={setCurrentStep}
+                    onSubmit={handleSubmit(onSubmit)}
+                  />
+                )}
+              </FormProvider>
             </View>
           </View>
         </View>
@@ -47,3 +66,24 @@ export function OnboardingScreen({}: Props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#252137',
+  },
+  contentContainer: {
+    flex: 1,
+    width: '100%',
+    paddingVertical: 40,
+    paddingHorizontal: 24,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    gap: 40,
+  },
+});

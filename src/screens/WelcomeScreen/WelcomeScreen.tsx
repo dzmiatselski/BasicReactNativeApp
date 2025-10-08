@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Image, StatusBar } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/types';
@@ -11,6 +11,7 @@ import { GradientText } from './components';
 import styles from './WelcomeScreen.styles';
 import { Modal, Portal } from 'react-native-paper';
 import { useModal } from '../../hooks';
+import { useFocusEffect } from '@react-navigation/native';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Welcome'>;
 
@@ -82,6 +83,14 @@ export function WelcomeScreen({ navigation }: Props) {
 
   const isLastStep = step === steps.length - 1;
 
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        hideModal();
+      };
+    }, [hideModal]),
+  );
+
   return (
     <View style={[styles.container, { paddingTop: safeInsets.top }]}>
       <StatusBar barStyle="light-content" />
@@ -146,7 +155,6 @@ export function WelcomeScreen({ navigation }: Props) {
               variant="primary"
               size="large"
               onPress={() => {
-                hideModal();
                 navigation.navigate('SignIn');
               }}
               style={styles.button}
@@ -160,7 +168,6 @@ export function WelcomeScreen({ navigation }: Props) {
               variant="default"
               size="large"
               onPress={() => {
-                hideModal();
                 navigation.navigate('Onboarding');
               }}
               style={styles.button}

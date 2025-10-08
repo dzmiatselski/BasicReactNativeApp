@@ -99,6 +99,8 @@ export const BaseInput = forwardRef<any, BaseInputProps>(
   },
 );
 
+BaseInput.displayName = 'BaseInput';
+
 const styles = StyleSheet.create({
   input: {
     height: 52,

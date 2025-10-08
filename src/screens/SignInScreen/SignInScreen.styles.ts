@@ -19,6 +19,18 @@ export default StyleSheet.create({
     alignItems: 'stretch',
     gap: 40,
   },
+  actionsWrapper: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'stretch',
+    gap: 24,
+  },
+  orWrapper: {
+    paddingHorizontal: 8,
+    flexDirection: 'row',
+    gap: 24,
+    alignItems: 'center',
+  },
   button: {
     width: '100%',
   },
