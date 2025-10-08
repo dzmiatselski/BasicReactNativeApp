@@ -1,15 +1,22 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { BaseInput, Button, Text } from '../../../components';
+import { Button, FormInput, Text } from '../../../components';
 import { Icons } from '../../../assets/icons';
 import { useAppTheme } from '../../../theme';
+import { useFormContext } from 'react-hook-form';
+import { OnboardingFormValues } from '../types';
 
 type PhoneNumberStepProps = {
   setStep: (step: number) => void;
+  onSubmit: (
+    e?: React.BaseSyntheticEvent<object, any, any> | undefined,
+  ) => Promise<void>;
 };
 
-export function PhoneNumberStep({ setStep }: PhoneNumberStepProps) {
+export function PhoneNumberStep({ setStep, onSubmit }: PhoneNumberStepProps) {
   const { colors } = useAppTheme();
+
+  const { control } = useFormContext<OnboardingFormValues>();
 
   return (
     <View style={styles.container}>
@@ -24,7 +31,12 @@ export function PhoneNumberStep({ setStep }: PhoneNumberStepProps) {
         </Text>
         <View style={styles.formFieldsWrapper}>
           {/* TODO: add mask functionality */}
-          <BaseInput placeholder="Phone number" />
+          <FormInput
+            name="phone"
+            control={control}
+            label="Phone number"
+            rules={{ required: 'Phone number is required' }}
+          />
           {/* TODO: add checkbox */}
         </View>
         <Button
@@ -61,8 +73,7 @@ export function PhoneNumberStep({ setStep }: PhoneNumberStepProps) {
         <Button
           variant="primary"
           size="large"
-          // TODO: submit form
-          onPress={() => {}}
+          onPress={onSubmit}
           style={styles.button}
         >
           <Text variant="controlL" color="white">

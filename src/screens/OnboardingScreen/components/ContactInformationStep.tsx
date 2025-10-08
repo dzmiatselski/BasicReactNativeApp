@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { BaseInput, Button, Text } from '../../../components';
+import { Button, FormInput, Text } from '../../../components';
 import { Icons } from '../../../assets/icons';
+import { useFormContext } from 'react-hook-form';
+import { OnboardingFormValues } from '../types';
 
 type ContactInformationStepProps = {
   setStep: (step: number) => void;
@@ -10,22 +12,68 @@ type ContactInformationStepProps = {
 export function ContactInformationStep({
   setStep,
 }: ContactInformationStepProps) {
+  const { control, trigger } = useFormContext<OnboardingFormValues>();
+
+  const handleNextClick = async () => {
+    const isValid = await trigger([
+      'firstName',
+      'lastName',
+      'email',
+      'dateOfBirth',
+      'gender',
+    ]);
+    if (isValid) {
+      setStep(1);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.stepContentContainer}>
-        <BaseInput label="First Name" />
-        <BaseInput label="Last Name" />
-        <BaseInput label="Email" />
+        <FormInput
+          name="firstName"
+          control={control}
+          label="First Name"
+          rules={{ required: 'First Name is required' }}
+        />
+        <FormInput
+          name="lastName"
+          control={control}
+          label="Last Name"
+          rules={{ required: 'Last Name is required' }}
+        />
+        <FormInput
+          name="email"
+          control={control}
+          label="Email"
+          rules={{
+            required: 'Email is required',
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Invalid email',
+            },
+          }}
+        />
         {/* TODO: add mask functionality */}
-        <BaseInput label="Date of Birth" />
+        <FormInput
+          name="dateOfBirth"
+          control={control}
+          label="Date of Birth"
+          rules={{ required: 'Date of Birth is required' }}
+        />
         {/* TODO: create Select component */}
-        <BaseInput label="Gender" />
+        <FormInput
+          name="gender"
+          control={control}
+          label="Gender"
+          rules={{ required: 'Gender is required' }}
+        />
       </View>
 
       <Button
         variant="primary"
         size="large"
-        onPress={() => setStep(1)}
+        onPress={handleNextClick}
         style={styles.button}
       >
         <Text variant="controlL" color="white">
